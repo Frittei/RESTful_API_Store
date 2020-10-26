@@ -11,7 +11,7 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList # This enables SQLAlchemy to know what tables sould be created
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///data.db') #Uses Horoku DB, but if not found uses SQlite as backup
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')#,'sqlite:///data.db') #Uses Horoku DB, but if not found uses SQlite as backup
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'frid'
 api = Api(app)
