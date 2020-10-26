@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -10,7 +12,7 @@ from resources.item import Item, ItemList
 from resources.store import Store, StoreList # This enables SQLAlchemy to know what tables sould be created
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db' #DB lives at root of folder
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///data.db') #Uses Horoku DB, but if not found uses SQlite as backup
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'frid'
 api = Api(app)
